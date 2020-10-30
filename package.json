@@ -5,7 +5,9 @@
   "main": "audiowaveform-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-server": "nodemon ./audiowaveform-server.js"
+    "dev-server": "nodemon ./audiowaveform-server.js",
+    "build": "docker build --tag node-audiowaveform-server .",
+    "start":"docker run -d -p 8080:3000 node-audiowaveform-server:latest"
   },
   "keywords": [
     "wavesurfer, audiowaveform, audio, nodejs, docker"
