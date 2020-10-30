@@ -5,7 +5,7 @@ const os = require("os");
 const fs = require("fs");
 
 const hostname = '0.0.0.0';
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 let tempDir = os.homedir() + "\\audiowaveform-server";
 if(os.platform() != "win32") {
