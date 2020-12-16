@@ -5,7 +5,7 @@ const os = require("os");
 const fs = require("fs");
 
 const hostname = '0.0.0.0';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 let tempDir = os.homedir() + "\\audiowaveform-server";
 if(os.platform() != "win32") {
@@ -78,13 +78,13 @@ function runAudiowaveform(response, filePath, tempDir) {
     }
 
     const cmd = "audiowaveform -i " + filePath + " -o " + outFile + " --pixels-per-second 20 --bits 8";
-
-    execCmd(response, cmd, () => {
-        runScaleFile(response, outFile, () => {
-            cleanup(filePath);
-            cleanup(outFile);
+        execCmd(response, cmd, () => {
+            console.log(response);
+            runScaleFile(response, outFile, () => {
+                cleanup(filePath);
+                cleanup(outFile);
+            });
         });
-    });
 }
 
 function runScaleFile(response, audiowaveformJsonFile, callback) {
